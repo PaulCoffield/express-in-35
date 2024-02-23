@@ -6,11 +6,21 @@ router.get("/", (req, res) => {
 });
 
 router.get("/new", (req, res) => {
-  res.send("New user form");
+  // res.send("New user form");
+  res.render("users/new");
 });
 
 router.post("/", (req, res) => {
-  res.send("Create user");
+  // res.send("Create user");
+  const isValid = false;
+
+  if (isValid) {
+    users.push({ firstName: req.body.firstName });
+    res.redirect(`/users/${users.length - 1}`);
+  } else {
+    console.log("Error!");
+    res.render("users/new", { firstName: req.body.firstName });
+  }
 });
 
 // Re-written below to use only 1 route definition '.route("/:id")'
