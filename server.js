@@ -4,6 +4,7 @@ const app = express();
 // Allow static files to be rendered without needing to setup specific routes for them
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.set("view engine", "ejs");
 app.use(logger);
